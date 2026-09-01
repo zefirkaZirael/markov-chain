@@ -1,29 +1,28 @@
-I have created a program that reads a text input from stdin and generates new text using the Markov 
-Chain algorithm. The program can generate text by predicting the most probable next word based on 
-the previous word, similar to the way predictive text functions on phone keyboards. 
-It follows these key points:
+# Markov Chain Text Generator
 
-By default, the program processes the entire input text and generates output based on the Markov Chain algorithm.
-The suffix length is always set to 1 word.
-The default prefix length is 2 words, with the starting prefix being the first two words of the input text.
-The generated text is limited to a maximum of 100 words, unless otherwise specified.
-The program has error handling to notify if any problems occur, and it stops generating text after reaching the maximum word limit or when encountering the last word in the input text.
+A text generator that reads text from `stdin` and generates new text using the **Markov Chain algorithm**.
 
-In addition, the program allows users to:
+The program predicts the most probable next word based on the previous word, similar to predictive text on phone keyboards.
 
-Set a maximum number of words to generate (with constraints: non-negative and ≤ 10,000).
-Example: $ cat the_great_gatsby.txt | ./markovchain -w 10 | cat -e
+## Features
 
-Specify a starting prefix (which must exist in the input text).
-Example: $ cat the_great_gatsby.txt | ./markovchain -w 10 -p "to play" | cat -e
+- Reads input text from `stdin`.
+- Generates text using the Markov Chain algorithm.
+- Uses a suffix length of **1 word**.
+- Uses a default prefix length of **2 words**.
+- Uses the first two words of the input as the default starting prefix.
+- Generates up to **100 words** by default.
+- Allows the maximum number of generated words to be configured.
+- Allows a custom starting prefix to be specified.
+- Allows the prefix length to be configured from **1 to 5 words**.
+- Stops generating when the maximum word limit is reached.
+- Stops generating when the last word of the input is reached.
+- Provides error messages for invalid input and arguments.
+- Provides usage information with the `--help` option.
 
+## Usage
 
-Adjust the prefix length (allowed between 1 and 5 words).
-Example: $ cat the_great_gatsby.txt | ./markovchain -w 10 -p "to something funny" -l 3
+The program reads text from standard input:
 
-If any issues arise, such as invalid input or constraints being violated, the program will print an error message indicating the problem.
-
-Additionally, the program is capable of printing usage information. This includes instructions 
-on how to use the text generator, such as command-line options, input requirements, and any additional 
-features the user needs to know.
-Example: ./markovchain --help
+```bash
+cat the_great_gatsby.txt | ./markovchain
